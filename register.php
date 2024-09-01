@@ -206,10 +206,12 @@
 
     <main class="form-signin w-100 m-auto">
     <?php
+      if(isset($_GET['msg'])){
         echo "<div class='alert alert-primary text-center' role='alert'>
           ". $_GET['msg'] ."
         </div>";
-      ?>
+      }
+    ?>
       <form action="process/pro-register.php" method="POST">
         <h1 class="h3 mb-3 fw-normal text-center">Register</h1>
 
