@@ -21,13 +21,17 @@ if($password !== $confirm_pass){
     return;
 }
 
-$query = "INSERT INTO user (username, email, password) VALUES ('$username','$email','$password')";
-
-if ($conn->query($query) === TRUE) {
-    $msg = "Registrasi Berhasil, Silahkan Login";
-  } else {
-    $msg = "Registrasi Gagal"; 
+try{
+  $query = "INSERT INTO user (username, email, password) VALUES ('$username','$email','$password')";
+  $conn->query($query);
+  $msg = "Registrasi Berhasil, Silahkan Login";
+}catch(mysqli_sql_exception $e){
+  if($e->getCode() == 1062){
+    $msg = "Email Sudah Ada";
+    header("Location: ../register.php?msg=". $msg);
+    return;
   }
+}
 
 
 header("Location: ../login.php?msg=". $msg);
