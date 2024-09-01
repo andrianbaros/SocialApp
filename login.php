@@ -206,11 +206,13 @@
 
     <main class="form-signin w-100 m-auto">
       <?php
-        echo "<div class='alert alert-primary text-center' role='alert'>
-          ". $_GET['msg'] ."
-        </div>";
+        if(isset($_GET['msg'])){
+          echo "<div class='alert alert-primary text-center' role='alert'>
+            ". $_GET['msg'] ."
+          </div>";
+      }
       ?>
-      <form action="feed.php">
+      <form action="process/pro-login.php" method="POST">
         <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
 
         <div class="form-floating">
@@ -219,6 +221,7 @@
             class="form-control"
             id="floatingInput"
             placeholder="name@example.com"
+            name="email"
           />
           <label for="floatingInput">Email address</label>
         </div>
@@ -228,6 +231,7 @@
             class="form-control"
             id="floatingPassword"
             placeholder="Password"
+            name="password"
           />
           <label for="floatingPassword">Password</label>
         </div>
