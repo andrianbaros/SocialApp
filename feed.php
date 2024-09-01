@@ -1,3 +1,16 @@
+<?php
+require 'database.php';
+
+$query = "SELECT * 
+          FROM status 
+          LEFT JOIN user ON status.id_user = user.id_user 
+          ORDER BY status.created_at DESC;
+          ";
+
+$result = $conn->query($query);
+
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="assets/js/color-modes.js"></script>
@@ -180,44 +193,30 @@
     <div class="row">
         <div class="col-lg-12">
             <h4> What's on your mind?</h4>
-            <form class="form">
+            <form action="process/pro-feed.php" method="POST">
                 <div class="mb-3">
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" name="text"></textarea>
                 </div>
                 <div class="mb-3">
                     <input type="submit" class="btn btn-primary float-end" value="POST">
                 </div>
                 </form>
-
         </div>
     </div>
     <div class="row">
         <div class=col-lg-12>
-            <p>
+       <?php
+        foreach($result as $row):
+            echo"<p>
                 <b>
-                    Username <br>
+                    " .$row['username']. "<br>
                 </b>
-                halo semua bla bla bla <br>
-                <a href="">Like</a> <a href="">Comment</a>
+                " .$row['text'] . " <br>
+                <a href=''>Like</a> <a href=''>Comment</a>
             </p>
-            <hr>
-            <p>
-                <b>
-                    Username <br>
-                </b>
-                halo semua bla bla bla <br>
-                <a href="">Like</a> <a href="">Comment</a>
-            </p>
-            <hr>
-            <p>
-                <b>
-                    Username <br>
-                </b>
-                halo semua bla bla bla <br>
-                <a href="">Like</a> <a href="">Comment</a>
-            </p>
-            <hr>
-
+            <hr>";
+          endforeach;
+          ?>
         </div>
 
     </div>
