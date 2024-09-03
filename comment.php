@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="assets/js/color-modes.js"></script>
@@ -11,7 +15,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
 
-    
+    <link rel="stylesheet" href="process/pro-feed.php">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
@@ -176,7 +180,11 @@
   </header>
 
   <main class="container">
-    
+    <div class="row">
+      <div class="col-lg-12">
+        <textarea class="form-control mb-2"><?= $_SESSION['text'] ?></textarea>
+      </div>
+    </div>
     <div class="row">
         <div class=col-lg-12>
             <p>
@@ -209,14 +217,14 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <form class="form">
+            <form action="pro-coment" method="POST">
                 <div class="mb-3">
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" name="comment"></textarea>
                 </div>
                 <div class="mb-3">
                     <input type="submit" class="btn btn-primary float-end" value="COMMENT">
                 </div>
-                </form>
+              </form>
 
         </div>
     </div>
