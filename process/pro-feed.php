@@ -4,7 +4,7 @@ require '../database.php';
 
 $text = $_POST['text'];
 
-
+$_SESSION['text'] = $text;
 
 //query ambil id
 $email = $_SESSION['email'];
