@@ -212,7 +212,7 @@ $result = $conn->query($query);
                     " .$row['username']. "<br>
                 </b>
                 " .$row['text'] . " <br>
-                <a href=''>Like</a> <a href=''>Comment</a>
+                <a href=''>Like</a> <a href='comment.php'>Comment</a>
             </p>
             <hr>";
           endforeach;
